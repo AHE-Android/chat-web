@@ -1,18 +1,11 @@
 body
 {
-	/* Background pattern from subtlepatterns.com */
 	background-color-: lightblue;
 	font-size: 16px;
 	font-family: 'Open Sans', sans-serif;
 	color: #111;
 	text-align: center;
 }
-
-a:link    { color: #36b03c; text-decoration: none; }
-a:visited { color: #36b03c; }
-a:active  { color: #36b03c; }
-a:hover   { color: #37b93d; text-decoration: underline; }
-
 
 input[type=text],
 input[type=password]
