@@ -57,8 +57,8 @@ if($_SESSION['is_online']==0)
 {
 ?>
 <form action="../layout/public.php" method="post">
-    <label>Login: <input type="text" name="login" maxlength="20"/></label>
-    <label>Hasło: <input type="password" name="password" maxlength="40"/></label>
+    <label>Login: <input type="text" name="login" maxlength="20"/></label><br>
+    <label>Hasło: <input type="password" name="password" maxlength="40"/></label><br>
     <input type="submit" value="Zaloguj"/>
 </form>
 <?php } ?>
