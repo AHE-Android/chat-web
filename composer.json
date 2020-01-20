@@ -11,6 +11,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
+        "google/cloud-firestore": "^1.8",
         "kreait/firebase-php": "^4.35",
         "php": ">= 7.4.1"
     }
