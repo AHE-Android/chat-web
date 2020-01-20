@@ -8,14 +8,33 @@ if(!isset($_SESSION['initiate']) || !isset($_SESSION['login']) || $_SESSION['is_
 require '../../vendor/autoload.php';
 
 use Kreait\Firebase\Factory;
+use Kreait\Firebase\ServiceAccount;
 
-$factory = (new Factory)
-  ->withServiceAccount('../../ahechat-91c01be9bd8b.json')
+$serviceAccount = ServiceAccount::fromJsonFile('../../ahechat-91c01be9bd8b.json');
+
+$firebase = (new Factory)
+  ->withServiceAccount($serviceAccount)
   ->withDatabaseUri('https://ahechat.firebaseio.com');
 
-$database = $factory->createDatabase();
+$db = $firebase->createDatabase();
+
+$snap = $db->getReference('messages')
+    ->getSnapshot();
+
+// $ref = $db->getReference('messages');
+// $snap = $ref->getSnapshot();
+// $val = $snap->getValue('text');
 
 
+
+?>
+<pre><?php
+var_dump($snap);
+?></pre><?php
+
+var_dump($val);
+
+echo "Value: ".$val."</br>";
 
 echo 'Welcome to chat';
 ?>
