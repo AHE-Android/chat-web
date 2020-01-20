@@ -1,1 +1,4 @@
 .idea
+composer.lock
+/vendor/
+ahechat-91c01be9bd8b.json
