@@ -11,6 +11,8 @@ _PHP Extensions_: php-grpc
 
 
 ## Instalation dependencies
+```bash
 composer install
+```
 
 GNU3 License
