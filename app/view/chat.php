@@ -6,11 +6,17 @@ if(!isset($_SESSION['initiate']) || !isset($_SESSION['login']) || $_SESSION['is_
 }
 
 //require '../../vendor/autoload.php';
-
+require_once '../service/DevTools.php';
 require_once '../service/Firestore.php';
-$fs = new Firestore('messages');
-print_r($fs->getDocument('1579432790'));
 
+$fs = new Firestore('channels');
+//dump($fs->getDocument('1579432790'));
+
+//dump($fs->getDocument('1579432790')->text);
+//dump($fs->getWhere('messages', '>', 1000));
+//dump($fs->newDocument(time(), ['text'=>'Witaj w KOMUNIKATORZE', 'login'=>'WEB_API']));
+//dump($fs->newCollection('channels', 'Example'));
+dump($fs->dropDocument('Example'));
 
 // use Kreait\Firebase\Factory;
 // use Kreait\Firebase\ServiceAccount;
@@ -31,11 +37,6 @@ print_r($fs->getDocument('1579432790'));
 // // $val = $snap->getValue('text');
 
 
-
-// ?>
-// <pre><?php
-// var_dump($snap);
-// ?></pre><?php
 
 // var_dump($val);
 
