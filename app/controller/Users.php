@@ -50,9 +50,3 @@ class Users{
 }
 
 $users = new Users();
-
-var_dump($users->insert([
-	'1' => 'TOMASZ',
-	'2'	=> 'ŁUKASZ',
-	'3' => 'EMIL'
-]));
