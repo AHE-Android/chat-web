@@ -8,6 +8,10 @@
             "name": "MushiX CSys",
             "email": "yxmusashixy@gmail.com"
         }
+        {
+            "name": "Emil",
+            "email": "emdom4@gmail.com"
+        }
     ],
     "minimum-stability": "dev",
     "require": {
