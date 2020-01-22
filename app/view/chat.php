@@ -5,18 +5,41 @@ if(!isset($_SESSION['initiate']) || !isset($_SESSION['login']) || $_SESSION['is_
     header("Location: ../view/login.php");
 }
 
-//require '../../vendor/autoload.php';
-require_once '../service/DevTools.php';
-require_once '../service/Firestore.php';
+use Google\Cloud\Firestore\FirestoreClient;
 
-$fs = new Firestore('channels');
-//dump($fs->getDocument('1579432790'));
 
-//dump($fs->getDocument('1579432790')->text);
-//dump($fs->getWhere('messages', '>', 1000));
+$fs = new Firestore('messages');
+
+
+// $collectionReference = $fs->collection('users');
+// $documentReference = $collectionReference->document('tomek');
+// $snapshot = $documentReference->snapshot();
+
+$messages = $fs->getDocuments();
+
+foreach ($messages as $msg){
+	echo "<b>&lt;".$msg['login']."&gt;</b>: ".$msg['text']." //".$msg['time']."<br/>";
+}
+
+echo "<br/><br/>";
+
+//echo $fs->getDocuments()[0]['text'];
+
+//echo "Witaj: ".$fs->getDocument('emil')['password'];
+
+//echo "Hello " . $snapshot['password'];
+
+
+//dump($fs->collection('messages')->document('1579432790')->snapshot()->data(), 1);
+
+
+//dump($fs->getDocument('1579432790')->get(), 1);
+//dump($fs->getWhere('time', '>', time()-1*7*24*60*60)); //time we must change to timestamp like google
 //dump($fs->newDocument(time(), ['text'=>'Witaj w KOMUNIKATORZE', 'login'=>'WEB_API']));
 //dump($fs->newCollection('channels', 'Example'));
-dump($fs->dropDocument('Example'));
+//dump($fs->dropDocument('Example'));
+
+
 
 // use Kreait\Firebase\Factory;
 // use Kreait\Firebase\ServiceAccount;

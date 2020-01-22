@@ -1,9 +1,9 @@
 <?php
 
-require_once '../../vendor/autoload.php';
 use Google\Cloud\Firestore\FirestoreClient;
 
-class Firestore{
+class Firestore
+{
 	protected $db;
 	protected $name;
 
@@ -26,6 +26,25 @@ class Firestore{
 			return $exception->getMessage();
 		}
 	}
+
+	//TODO: Specified $field if not define ALL data
+	//Get the id: $document->id() is a timestamp and lastTimestamp must be can a parameter
+	function getDocuments(){
+		$i = 0;
+		$array = [];
+
+    $citiesRef = $this->db->collection($this->name);
+    $documents = $citiesRef->documents();
+    foreach($documents as $document){
+      if($document->exists()){
+      	$array[] = $document->data();
+      } else{
+        printf('Document %s does not exist!' . PHP_EOL, $snapshot->id());
+      }
+    }
+    return $array;
+	}
+
 
 	public function getWhere(string $field, string $operator, $value){
 		$array = [];

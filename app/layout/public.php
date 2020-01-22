@@ -1,3 +1,9 @@
+<?php
+require_once '../../vendor/autoload.php';
+require_once '../service/Firestore.php';
+require_once '../service/DevTools.php';
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
