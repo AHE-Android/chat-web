@@ -32,8 +32,8 @@ class Firestore
 	function getDocuments(){
 		$array = [];
 
-    $citiesRef = $this->db->collection($this->name);
-    $documents = $citiesRef->documents();
+    $ref = $this->db->collection($this->name);
+    $documents = $ref->documents();
     foreach($documents as $document){
       if($document->exists()){
       	$array[] = $document->data();
@@ -54,6 +54,35 @@ class Firestore
 			}
 		}
 		return $array;
+	}
+
+	public function getLast(int $howMany){
+		//$array = [];
+		// $query = $this->db->collection($this->name)->orderBy('time')->limit([$howMany]);
+		//return $array;
+
+		$array = [];
+    $ref = $this->db->collection($this->name);
+    $documents = $ref->documents();
+
+    // var_dump($documents);
+    // echo "<br/><br/>";
+
+    //TODO: more optymalization method must we have
+
+    // for($i=5; $i<8; $i++){
+    // 	$array[] = $documents->entAt(2);
+    // }
+
+    // foreach($documents as $document){
+    //   if($document->exists()){
+    //   	$array[] = $document->data();
+    //   } else{
+    //     printf('Document %s does not exist!' . PHP_EOL, $snapshot->id());
+    //   }
+    // }
+    return $array;
+
 	}
 
 	public function newDocument(string $name, array $data = []){
