@@ -12,6 +12,8 @@ if(!isset($_SESSION['initiate'])){
 ?>
 
 <?php
+$fs = new Firestore('users');
+
 if(isset($_GET['action']) && $_GET['action']=='logout'){
     $_SESSION['is_online'] = 0;
     session_destroy();
@@ -35,10 +37,13 @@ if((isset($_POST['login']) && isset($_POST['password'])) || $_SESSION['is_online
         if($_SESSION['is_online']==0){
             $login      = filter_var($_POST['login'],   FILTER_SANITIZE_STRING);
             $password   = filter_var($_POST['password'],FILTER_SANITIZE_STRING);
+            $user = $fs->getDocument($login);
         }
-        if(($login=="login" && $password=="password") || $_SESSION['is_online']==1){
-            if($_SESSION['is_online']==0)
+        dump(password_verify($password, $user['password']));
+        if(password_verify($password, $user['password']) || $_SESSION['is_online']==1){
+            if($_SESSION['is_online']==0){
                 $_SESSION['login']=$login;
+            }
 
             $_SESSION['is_online']=1;
             $_SESSION['time']=time();

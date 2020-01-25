@@ -30,7 +30,6 @@ class Firestore
 	//TODO: Specified $field if not define ALL data
 	//Get the id: $document->id() is a timestamp and lastTimestamp must be can a parameter
 	function getDocuments(){
-		$i = 0;
 		$array = [];
 
     $citiesRef = $this->db->collection($this->name);
