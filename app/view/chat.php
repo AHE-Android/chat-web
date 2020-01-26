@@ -20,13 +20,15 @@ foreach ($messages as $msg){
 
 
 echo "<br/><br/>";
-
-echo '<button id="loadNew">Load New Messages</button>';
 ?>
+<div id="messages">
+
+</div>
+<button id="loadNew">Load New Messages</button>
 
 <div id="input">
-	<form>
-		<input type="text"/>
+	<form id="input-form" method="POST"><!-- action="../service/sendMessage.php" -->
+		<input type="text" name='message'/>
 		<input type="submit" value="Wyślij">
 	</form>
 </div>
@@ -44,7 +46,22 @@ $('#loadNew').click(function(){
 	  method: "POST",
 	  async:false
 	}).done(function(res){
-	  	$('#content').html(res);
+	  	$('#messages').html($('#messages').html()+res);
 	 	});
 })
+
+$('#input-form').submit(function(){
+  var msg = $('#input-form').serialize();
+
+  $.ajax({
+  	url: "../service/sendMessage.php",
+  	contentType: "application/x-www-form-urlencoded; charset=utf-8",
+  	data: msg,
+  	method: "POST",
+  	async: false
+  })
+
+  // $.post('../service/sendMessage.php', data, function(data){
+  // });
+});
 </script>

@@ -48,7 +48,7 @@ require_once '../service/DevTools.php';
                 </ul>
             </nav>
             <footer>
-                <p>Wszelkie prawa zastrzeżone. <b>Example</b></p>
+                <p>Wszelkie prawa zastrzeżone. <b>ExamPLE</b></p>
             </footer>
         </div>
         <section id="content">
