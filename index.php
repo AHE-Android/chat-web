@@ -12,7 +12,7 @@ if(!isset($_SESSION['initiate']) || $_SESSION['is_online']==0){
     //if(!isset($_COOKIE['url']))
     setcookie('url', null, -1, '/');
     setcookie('url', 'login.php', 0);
-    header("Location: app/layout/public.php");
+    header("Location: app/layout/authorization.php");
 } else {
     setcookie('url', null, -1, '/');
     setcookie('url', 'chat.php', 0);

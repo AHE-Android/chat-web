@@ -1,17 +1,4 @@
 <?php
-session_start();
-
-if(!isset($_SESSION['initiate'])){
-    session_regenerate_id();
-    $newSessionID = session_id();
-    session_write_close();
-    session_id($newSessionID);
-    session_start();
-    $_SESSION['initiate'] = 1;
-}
-?>
-
-<?php
 $fs = new Firestore('users');
 
 if(isset($_GET['action']) && $_GET['action']=='logout'){
@@ -61,9 +48,11 @@ if((isset($_POST['login']) && isset($_POST['password'])) || $_SESSION['is_online
 if($_SESSION['is_online']==0)
 {
 ?>
-<form action="../layout/public.php" method="post">
-    <label>Login: <input type="text" name="login" maxlength="20"/></label><br>
-    <label>Hasło: <input type="password" name="password" maxlength="40"/></label><br>
+<h1>ExamPLE</h1>
+<h2>Logowanie</h2>
+<form action="../layout/public.php" method="post" id="sign-in">
+    <input type="text" name="login" maxlength="20" placeholder="Login" /><br>
+    <input type="password" name="password" maxlength="40" placeholder="Hasło" /><br>
     <input type="submit" value="Zaloguj"/>
 </form>
 <?php } ?>
