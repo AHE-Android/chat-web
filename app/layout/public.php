@@ -10,6 +10,8 @@ if(!isset($_SESSION['initiate']) || !isset($_SESSION['login']) || $_SESSION['is_
 require_once '../../vendor/autoload.php';
 require_once '../service/Firestore.php';
 require_once '../service/DevTools.php';
+
+$users = new Firestore('users');
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +19,6 @@ require_once '../service/DevTools.php';
     <head>
         <meta charset="UTF-8">
         <link rel="icon" type="image/png" href="../../assets/img/favicon.png">
-		<link rel="stylesheet" href="../../assets/css/main.css">
         <link rel="stylesheet" href="../../assets/css/chat.css">
         <title><?php echo "KOMUNIKATOR: ".$_COOKIE['url']; ?></title>
         <script src="../../assets/js/jQuery/jquery-3.4.1.min.js"></script>
@@ -57,9 +58,12 @@ require_once '../service/DevTools.php';
         <div id="online-users">
             <label>Lista Użytkowników</label>
             <ul>
-                <li>tomek</li>
-                <li>łukasz</li>
-                <li>Emil</li>
+                <?php
+                $online = $users->getIdWhere('is_online', '=', true);
+                foreach ($online as $key => $user){
+                    print "<li>$user</li>";
+                }
+                ?>
             </ul>
         </div>
     </body>

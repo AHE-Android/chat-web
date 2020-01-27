@@ -56,6 +56,17 @@ class Firestore
 		return $array;
 	}
 
+	public function getIdWhere(string $field, string $operator, $value){
+		$array = [];
+		$query = $this->db->collection($this->name)->where($field, $operator, $value)->documents()->rows();
+		if(!empty($query)){
+			foreach($query as $item){
+				$array[] = $item->id();
+			}
+		}
+		return $array;
+	}
+
 	public function getLast(int $howMany){
 		//$array = [];
 		// $query = $this->db->collection($this->name)->orderBy('time')->limit([$howMany]);

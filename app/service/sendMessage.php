@@ -12,3 +12,4 @@ $fs->newDocument(time(), [
 	'text'=>$_POST['message'],
 	'time'=>new Timestamp(new DateTime())
 ]);
+?>
