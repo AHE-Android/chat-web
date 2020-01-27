@@ -27,8 +27,8 @@ echo "<br/><br/>";
 <button id="loadNew">Load New Messages</button>
 
 <div id="input">
-	<form id="input-form" method="POST"><!-- action="../service/sendMessage.php" -->
-		<input type="text" name='message'/>
+	<form id="input-form" method="POST">
+		<input type="text" name='message' autocomplete="off"/>
 		<input type="submit" value="Wyślij">
 	</form>
 </div>
@@ -44,7 +44,7 @@ $('#loadNew').click(function(){
 	  contentType: "application/x-www-form-urlencoded; charset=utf-8",
 	  data: {time: lastRead},
 	  method: "POST",
-	  async:false
+	  async: true
 	}).done(function(res){
 	  	$('#messages').html($('#messages').html()+res);
 	 	});
@@ -58,10 +58,7 @@ $('#input-form').submit(function(){
   	contentType: "application/x-www-form-urlencoded; charset=utf-8",
   	data: msg,
   	method: "POST",
-  	async: false
-  })
-
-  // $.post('../service/sendMessage.php', data, function(data){
-  // });
+  	async: true
+  });
 });
 </script>
