@@ -18,12 +18,11 @@ foreach ($messages as $msg){
 	}
 }
 
-
 echo "<br/><br/>";
 ?>
-<div id="messages">
 
-</div>
+<div id="messages"></div>
+
 <button id="loadNew">Load New Messages</button>
 
 <div id="input">

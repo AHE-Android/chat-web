@@ -14,13 +14,14 @@ document.querySelector('#loadNew').addEventListener('click', function(){
 });
 
 var msg = document.querySelector('#input-form input[type="text"]');
-
 function sendMessage(){
+	if(msg.value == "") return;
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "../service/sendMessage.php", true);
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	xhr.onload = ()=>{
 		if(xhr.readyState != 4 || xhr.status != 200) return;
+		msg.value = "";
 	};
 	xhr.send("message="+msg.value);
 }
