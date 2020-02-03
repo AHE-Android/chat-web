@@ -3,7 +3,6 @@ require_once '../../vendor/autoload.php';
 require_once 'Firestore.php';
 $fs = new Firestore('messages');
 
-
 // $i++;
 // var_dump(++$i); echo "<br/><br/>";
 echo "<pre>";
