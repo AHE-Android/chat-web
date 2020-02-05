@@ -8,6 +8,8 @@ use Google\Cloud\Core\Timestamp;
 $datetime = new Timestamp(new DateTime($_POST['time']));
 
 $messages = $fs->getWhere('time', '>', $datetime);
+if(empty($messages)) return false;
+
 foreach($messages as &$msg)
 	$msg['time'] = (string)$msg['time'];
 
