@@ -1,26 +1,3 @@
-<?php
-$fs = new Firestore('messages');
-
-$messages = $fs->getDocuments();
-foreach ($messages as $msg){
-	if($msg['login']==$_SESSION['login']){
-		echo "
-			<div class='msg my-msg'>
-				<b>&lt;".$msg['login']."&gt;</b>: ".$msg['text']." //".$msg['time']."
-			</div><br/><br/>
-		";
-	} else {
-		echo "
-			<div class='msg'>
-				<b>&lt;".$msg['login']."&gt;</b>: ".$msg['text']." //".$msg['time']."
-			</div><br/><br/>
-		";
-	}
-}
-
-echo "<br/><br/>";
-?>
-
 <div id="messages"></div>
 
 <button id="loadNew">Load New Messages</button>
@@ -32,4 +9,7 @@ echo "<br/><br/>";
 	</form>
 </div>
 
+<script>
+	var login = "<?php echo $_SESSION['login'] ?>";
+</script>
 <script src="../../assets/js/firestoreHelper.js"></script>
