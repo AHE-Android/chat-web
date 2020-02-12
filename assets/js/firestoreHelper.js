@@ -4,7 +4,7 @@ function readNewMessages()
 {
 	setInterval(function(){
 		var xhr = new XMLHttpRequest();
-		xhr.open("POST", "../service/loadNewMessages.php", true);
+		xhr.open("POST", "../service/loadNewMessages", true);
 		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		xhr.onload = ()=>{
 			if(xhr.readyState != 4 || xhr.status != 200) return;
@@ -22,7 +22,7 @@ function readNewMessages()
 			});
 		};
 		xhr.send("time="+lastRead);
-	}, 1800);
+	}, 5000);
 }
 readNewMessages();
 

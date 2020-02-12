@@ -1,7 +1,5 @@
 <div id="messages"></div>
 
-<button id="loadNew">Load New Messages</button>
-
 <div id="input">
 	<form id="input-form" method="POST" onsubmit="sendMessage();return false">
 		<input type="text" name='message' autocomplete="off"/>
